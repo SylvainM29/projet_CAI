@@ -1,8 +1,0 @@
-{
-  "name": "polymer3-beers",
-  "version": "1.0.0",
-  "description": "Polymer beers tutorial",
-  "main": "index.js",
-  "author": "Horacio Gonzalez <horacio.gonzalez@gmail.com>",
-  "license": "MIT"
-}
