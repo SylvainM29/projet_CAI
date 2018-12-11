@@ -20,10 +20,10 @@ body {font-size:16px;}
     <h3 class="w3-padding-64"><b>Propose ta binche</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="home.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Accueil</a> 
-    <a href="actualCatalogue.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Le catalogue actuel</a> 
-    <a href="proposedCatalogue.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Les propositions en cours</a> 
-    <a href="proposition.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ta proposition</a> 
+    <a href="home.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Accueil</a>
+    <a href="actualCatalogue.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Le catalogue actuel</a>
+    <a href="proposedCatalogue.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Les propositions en cours</a>
+    <a href="proposition.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ta proposition</a>
     <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
   </div>
 </nav>
@@ -39,27 +39,48 @@ body {font-size:16px;}
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
-  
+
   <!-- Contact -->
   <div class="w3-container" id="contact" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-black"><b>Ta proposition.</b></h1>
     <hr style="width:250px;border:5px solid orange" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <p>C'est le moment de nous dire tout ce que tu sais sur ce fameux breuvage que tu souhaiterai voir à l'ENIBAR</p>
     <form action="/action_page.php" target="_blank">
+      <h2 class="w3-xxlarge w3-text-black">La bière :</h2>
       <div class="w3-section">
-        <label>Name</label>
+        <label>Nom</label>
         <input class="w3-input w3-border" type="text" name="Name" required>
       </div>
       <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
+        <label>Type</label>
+        <select name="Type" class="w3-input w3-border">
+          <option value="Blonde">Blonde</option>
+          <option value="Ambrée">Ambrée</option>
+          <option value="Rousse">Rousse</option>
+          <option value="Brune">Brune</option>
+          <option value="Autre">Autre</option>
+          <option value="null">Inconnu</option>
+        </select>
       </div>
       <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
+        <label>Degré d'alcool</label>
+        <input class="w3-input w3-border" type="text" name="Alcool" required>
       </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-orange w3-margin-bottom">Send Message</button>
-    </form>  
+      <div class="w3-section">
+        <label>Région/Pays de fabrication</label>
+        <input class="w3-input w3-border" type="text" name="Region" required>
+      </div>
+      <div class="w3-section">
+        <label>Brasserie</label>
+        <input class="w3-input w3-border" type="text" name="Brasserie" required>
+      </div>
+      <h2 class="w3-xxlarge w3-text-black">L'auteur de cette suggestion :</h2>
+      <div class="w3-section">
+        <label>Ton nom et/ou Prénom et/ou Surnom</label>
+        <input class="w3-input w3-border" type="text" name="Auteur" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-orange w3-margin-bottom">Valider la proposition</button>
+    </form>
   </div>
 
 <!-- End page content -->
@@ -74,7 +95,7 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
