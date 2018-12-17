@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CatalogueService } from '../services/catalogue.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-catalogue-view',
   templateUrl: './catalogue-view.component.html',
   styleUrls: ['./catalogue-view.component.scss']
 })
-export class CatalogueViewComponent implements OnInit {
+export class CatalogueViewComponent implements OnInit, OnDestroy {
   isAuth = false;
 
   lastUpdate = new Promise((resolve, reject) => {
@@ -20,6 +21,8 @@ export class CatalogueViewComponent implements OnInit {
 
   beers: any[];
 
+  beersSubscription: Subscription;
+
   constructor(private catalogueService: CatalogueService) {
     setTimeout(
       () => {
@@ -29,7 +32,16 @@ export class CatalogueViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.beers = this.catalogueService.beers;
+    this.beersSubscription = this.catalogueService.beersSubject.subscribe(
+      (beers: any[]) => {
+        this.beers = beers;
+      }
+    );
+    this.catalogueService.emitBeersSubject();
+  }
+
+  ngOnDestroy() {
+    this.beersSubscription.unsubscribe();
   }
 
   onLike() {
@@ -46,5 +58,9 @@ export class CatalogueViewComponent implements OnInit {
 
   isAllLiked() {
     return this.catalogueService.allLike;
+  }
+
+  onFetch() {
+    this.catalogueService.getBeersFromServer();
   }
 }

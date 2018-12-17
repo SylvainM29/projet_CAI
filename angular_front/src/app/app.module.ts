@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -20,13 +21,13 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
+  { path: '', component: AuthComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
-  { path: 'auth', component: AuthComponent },
-  { path: 'proposition', component: FormPropositionComponent },
-  { path: '', component: AuthComponent },
+  { path: 'proposition', canActivate: [AuthGuard], component: FormPropositionComponent },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est � mettre obligatoirement � la fin
+  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
 
 @NgModule({
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     CatalogueService,
@@ -54,4 +56,5 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
