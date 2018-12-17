@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormPropositionService } from '../services/form-proposition.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form-proposition',
@@ -14,8 +15,7 @@ export class FormPropositionComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     console.log(form.value);
   }
-
 }
