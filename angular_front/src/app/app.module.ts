@@ -15,13 +15,18 @@ import { BeerComponent } from './beer/beer.component';
 import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
 import { FormPropositionComponent } from './form-proposition/form-proposition.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'catalogue', component: CatalogueViewComponent },
-  { path: 'catalogue/:name', component: BeerComponent },
+  { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
+  { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'proposition', component: FormPropositionComponent },
   { path: '', component: CatalogueViewComponent }
+  { path: '', component: AuthComponent },
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est � mettre obligatoirement � la fin
 ]
 
 @NgModule({
@@ -33,6 +38,7 @@ const appRoutes: Routes = [
     CatalogueViewComponent,
     BeerComponent,
     FormPropositionComponent
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     CatalogueService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
