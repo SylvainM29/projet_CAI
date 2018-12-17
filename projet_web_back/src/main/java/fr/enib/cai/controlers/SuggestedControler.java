@@ -3,6 +3,7 @@ package fr.enib.cai.controlers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.enib.cai.model.Beer;
+import fr.enib.cai.model.CatalogBeer;
 import fr.enib.cai.model.SuggestedBeer;
 import org.jongo.Jongo;
 import org.jongo.MongoCursor;
@@ -20,11 +21,13 @@ public class SuggestedControler {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final ObjectMapper mapper;
     private final Jongo jongo;
+    private final CatalogControler catalogControler;
 
     @Inject
-    public SuggestedControler(ObjectMapper jacksonMapper, Jongo jongo) {
+    public SuggestedControler(ObjectMapper jacksonMapper, Jongo jongo, CatalogControler catalogControler) {
         mapper = jacksonMapper;
         this.jongo = jongo;
+        this.catalogControler = catalogControler;
     }
 
     @GET
@@ -100,6 +103,16 @@ public class SuggestedControler {
     @Path("/delete/:beerId")
     public int deleteSuggestedBeerById(String beerId) {
         jongo.getCollection("suggestedBeers").remove("{beer.id: #}", beerId);
+        return 0;
+    }
+
+    @GET
+    @Path("/tocatalog/:beerId")
+    public int toCalatalog(String beerId) throws IOException{
+
+        SuggestedBeer suggestedBeer = retrieveSuggestedBeerById(beerId);
+        catalogControler.newCatalogBeer(suggestedBeer.getBeer());
+        deleteSuggestedBeerById(beerId);
         return 0;
     }
 }
