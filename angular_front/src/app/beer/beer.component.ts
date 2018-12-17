@@ -16,6 +16,10 @@ export class BeerComponent implements OnInit {
   constructor(private catalogueService: CatalogueService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.name = this.route.snapshot.params['name'];
+    const name = this.route.snapshot.params['name'];
+    const beer = this.catalogueService.getBeerByName(name);
+    this.name = beer.name;
+    this.degre = beer.degre;
+    this.description = beer.description;
   }
 }

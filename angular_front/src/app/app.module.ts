@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'catalogue', component: CatalogueViewComponent },
   { path: 'catalogue/:name', component: BeerComponent },
   { path: 'auth', component: AuthComponent },
-  { path: '', component: CatalogueViewComponent }
+  { path: '', component: AuthComponent }
 ]
 
 @NgModule({
