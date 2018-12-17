@@ -19,12 +19,11 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
+  { path: '', component: AuthComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
-  { path: 'auth', component: AuthComponent },
-  { path: 'proposition', component: FormPropositionComponent },
-  { path: '', component: CatalogueViewComponent }
-  { path: '', component: AuthComponent },
+  { path: 'proposition', canActivate: [AuthGuard], component: FormPropositionComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
@@ -37,7 +36,7 @@ const appRoutes: Routes = [
     AuthComponent,
     CatalogueViewComponent,
     BeerComponent,
-    FormPropositionComponent
+    FormPropositionComponent,
     FourOhFourComponent
   ],
   imports: [
