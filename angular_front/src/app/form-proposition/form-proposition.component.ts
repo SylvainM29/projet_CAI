@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormPropositionService } from '../services/form-proposition.service';
 
 @Component({
   selector: 'app-form-proposition',

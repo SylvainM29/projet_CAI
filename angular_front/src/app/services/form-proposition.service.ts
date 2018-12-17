@@ -2,13 +2,13 @@ export class FormPropositionService{
 
   newProposition(auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, date: string){
     const formProposition = {
-      auteur: string ='',
-      name:  string ='',
-      brasserie: string = '',
-      typeB: string = '',
-      degre: string = '',
-      region: string = '',
-      date: string = ''
+      auteur :'',
+      name :'',
+      brasserie:'',
+      typeB:'',
+      degre:'',
+      region:'',
+      date:''
     };
     formProposition.auteur = auteur;
     formProposition.name = name;

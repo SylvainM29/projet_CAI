@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
-  { path: 'proposition', canActivate: [AuthGuard], component: FormPropositionComponent },
+  { path: 'proposition', component: FormPropositionComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
