@@ -15,10 +15,11 @@ import { BeerComponent } from './beer/beer.component';
 import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'catalogue', component: CatalogueViewComponent },
-  { path: 'catalogue/:name', component: BeerComponent },
+  { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
+  { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     CatalogueService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
