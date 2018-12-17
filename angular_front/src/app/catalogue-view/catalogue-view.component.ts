@@ -59,4 +59,8 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
   isAllLiked() {
     return this.catalogueService.allLike;
   }
+
+  onFetch() {
+    this.catalogueService.getBeersFromServer();
+  }
 }
