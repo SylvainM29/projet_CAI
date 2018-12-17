@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: fr.enib.cai.AppTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.275 s <<< FAILURE! - in fr.enib.cai.AppTest
+integrationTest(fr.enib.cai.AppTest)  Time elapsed: 3.353 s  <<< ERROR!
+java.net.ConnectException: Connection refused: connect
+	at fr.enib.cai.AppTest.integrationTest(AppTest.java:26)
+

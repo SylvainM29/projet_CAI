@@ -1,0 +1,16 @@
+[Unit]
+Description=jooby-beers
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/jooby-beers
+ExecStart=/opt/jooby-beers/bin/jooby-beers --exec
+ExecStop=/opt/jooby-beers/bin/jooby-beers --stop
+PIDFile=/opt/jooby-beers/run/jooby-beers.pid
+KillMode=process
+Restart=on-failure
+User=
+Group=
+
+[Install]
+WantedBy=multi-user.target

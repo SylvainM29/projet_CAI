@@ -1,0 +1,6 @@
+fr\enib\cai\model\Beer.class
+fr\enib\cai\model\SuggestedBeer.class
+fr\enib\cai\controlers\SuggestedControler.class
+fr\enib\cai\controlers\CatalogControler.class
+fr\enib\cai\model\CatalogBeer.class
+fr\enib\cai\App.class
