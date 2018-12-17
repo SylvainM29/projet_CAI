@@ -14,12 +14,15 @@ import { BeerComponent } from './beer/beer.component';
 
 import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 const appRoutes: Routes = [
   { path: 'catalogue', component: CatalogueViewComponent },
   { path: 'catalogue/:name', component: BeerComponent },
   { path: 'auth', component: AuthComponent },
-  { path: '', component: AuthComponent }
+  { path: '', component: AuthComponent },
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
 
 @NgModule({
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
     ConsulterBieresProposeesComponent,
     AuthComponent,
     CatalogueViewComponent,
-    BeerComponent
+    BeerComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
