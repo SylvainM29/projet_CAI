@@ -1,7 +1,11 @@
+import { Subject } from 'rxjs';
+
 export class CatalogueService {
   allLike = false;
 
-  beers = [
+  beersSubject = new Subject<any[]>();
+
+  private beers = [
     {
       name: 'Heineken',
       degre: 4.5,
@@ -28,6 +32,11 @@ export class CatalogueService {
     }
   ];
 
+  emitBeersSubject() {
+    // On émet une copie de la liste des bières
+    this.beersSubject.next(this.beers.slice());
+  }
+
   getBeerByName(name: string) {
     const beer = this.beers.find(
       (beerObject) => {
@@ -39,10 +48,12 @@ export class CatalogueService {
 
   likeOne(i: number) {
     this.beers[i].like = true;
+    this.emitBeersSubject();
   }
 
   unlikeOne(i: number) {
     this.beers[i].like = false;
+    this.emitBeersSubject();
   }
 
   likeAll() {
@@ -50,6 +61,7 @@ export class CatalogueService {
       beer.like = true;
     }
     this.allLike = true;
+    this.emitBeersSubject();
   }
 
   unlikeAll() {
@@ -57,5 +69,6 @@ export class CatalogueService {
       beer.like = false;
     }
     this.allLike = false;
+    this.emitBeersSubject();
   }
 }

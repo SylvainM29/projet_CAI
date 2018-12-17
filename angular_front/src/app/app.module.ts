@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: '', component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
+  { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est Ã  mettre obligatoirement Ã  la fin
 ]
 
 @NgModule({
@@ -49,4 +49,5 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
