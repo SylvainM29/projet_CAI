@@ -14,11 +14,13 @@ import { BeerComponent } from './beer/beer.component';
 
 import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
+import { FormPropositionComponent } from './form-proposition/form-proposition.component';
 
 const appRoutes: Routes = [
   { path: 'catalogue', component: CatalogueViewComponent },
   { path: 'catalogue/:name', component: BeerComponent },
   { path: 'auth', component: AuthComponent },
+  { path: 'proposition', component: FormPropositionComponent },
   { path: '', component: CatalogueViewComponent }
 ]
 
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     ConsulterBieresProposeesComponent,
     AuthComponent,
     CatalogueViewComponent,
-    BeerComponent
+    BeerComponent,
+    FormPropositionComponent
   ],
   imports: [
     BrowserModule,
