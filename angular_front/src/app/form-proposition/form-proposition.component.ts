@@ -1,7 +1,7 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormPropositionService } from '../services/form-proposition.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form-proposition',
@@ -16,7 +16,7 @@ export class FormPropositionComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     console.log(form.value);
     const auteur = form.value['auteur'];
     const name = form.value['name'];
@@ -27,5 +27,4 @@ export class FormPropositionComponent implements OnInit {
     this.formPropositionService.newProposition(auteur, name, brasserie, typeB, degre, region);
     this.router.navigate(['/catalogue']);
   }
-
 }
