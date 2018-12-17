@@ -15,6 +15,7 @@ import { BeerComponent } from './beer/beer.component';
 import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
 import { FormPropositionComponent } from './form-proposition/form-proposition.component';
+import { FormPropositionService } from './services/form-proposition.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 
@@ -23,7 +24,6 @@ const appRoutes: Routes = [
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'proposition', component: FormPropositionComponent },
-  { path: '', component: CatalogueViewComponent }
   { path: '', component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est � mettre obligatoirement � la fin
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
     AuthComponent,
     CatalogueViewComponent,
     BeerComponent,
-    FormPropositionComponent
+    FormPropositionComponent,
     FourOhFourComponent
   ],
   imports: [
@@ -49,7 +49,8 @@ const appRoutes: Routes = [
   providers: [
     CatalogueService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    FormPropositionService
   ],
   bootstrap: [AppComponent]
 })

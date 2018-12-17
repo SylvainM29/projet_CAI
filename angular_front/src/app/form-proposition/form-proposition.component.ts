@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FormPropositionComponent implements OnInit {
 
   date = new Date();
-  constructor() {
+  constructor(private formPropositionService: FormPropositionService) {
   }
 
   ngOnInit() {}
