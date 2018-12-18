@@ -5,16 +5,16 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class FormPropositionService{
 
-  newProposition(id, name: string, brasserie: string, type: string, degre: string, region: string, description: string, availability: string){
+  newProposition(name: string, brasserie: string, type: string, degre: string, region: string, description: string, availability: string){
     const formProposition = {
-      id: 0,
+      id: "",
       name :'',
       brewery:'',
       style:'',
       alcohol:'',
       description:''
     };
-    formProposition.id = id;
+    formProposition.id = name.trim();
     formProposition.name = name;
     formProposition.brewery = brasserie;
     formProposition.style = type;
