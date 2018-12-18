@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class FormCatalogueService{
 
-  newCatalogueBeer(id, auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string,
+  newCatalogueBeer(auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string,
       availability: string) {
     const formCatalogue = {
-      id: 0,
+      id: '',
       name :'',
       brewery:'',
       style:'',
@@ -16,7 +16,7 @@ export class FormCatalogueService{
       description:'',
       availability:''
     };
-    formCatalogue.id = id;
+    formCatalogue.id = name.trim();
     formCatalogue.name = name;
     formCatalogue.brewery = brasserie;
     formCatalogue.style = type;
@@ -25,7 +25,7 @@ export class FormCatalogueService{
     formCatalogue.availability = availability;
     console.log(formCatalogue);
     this.httpClient
-      .post('http://localhost:8080/suggested/new/formCatalogue.json', formCatalogue)
+      .post('http://localhost:8080/catalog/new', formCatalogue)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');
