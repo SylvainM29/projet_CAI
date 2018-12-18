@@ -25,12 +25,18 @@ export class BieresProposeesViewComponent implements OnInit, OnDestroy {
 
   beersSubscription: Subscription;
 
+  onFetch() {
+    this.bieresProposeesService.getBeersFromServer();
+  }
+
   constructor(private bieresProposeesService: BieresProposeesService) {
     setTimeout(
       () => {
         this.isAuth = true;
       }, 1000
     );
+
+    this.onFetch();
   }
 
   ngOnInit() {
@@ -60,9 +66,5 @@ export class BieresProposeesViewComponent implements OnInit, OnDestroy {
 
   isAllLiked() {
     return this.bieresProposeesService.allLike;
-  }
-
-  onFetch() {
-    this.bieresProposeesService.getBeersFromServer();
   }
 }

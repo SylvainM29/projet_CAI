@@ -34,6 +34,8 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
         this.isAuth = true;
       }, 1000
     );
+
+    this.onFetch();
   }
 
   ngOnInit() {
