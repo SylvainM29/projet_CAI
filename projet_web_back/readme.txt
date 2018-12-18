@@ -34,7 +34,7 @@ Doc back bieres jooby
 	localhost:8080/suggested/delete/ChimayTriple -> Supprime la SuggestedBeer avec l'id ChimayTriple s'il existe dans mongo.
 	return 0
 
-  GET  /suggested/tocatalog:beerId               [*/*]     [*/*]    (/SuggestedControler.toCatalog)
+  GET  /suggested/tocatalog/:beerId               [*/*]     [*/*]    (/SuggestedControler.toCatalog)
   	localhost:8080/suggested/tocatalog/ChimayTriple -> Supprime la SuggestedBeer avec l'id ChimayTriple s'il existe dans mongo.
   	Crée une CatalogBeer à partir de la suggestedBeer.
   	return 0
