@@ -7,19 +7,19 @@
   <!--<input type="text" class="form-control" [(ngModel)]="beerDegre">-->
   <a [routerLink]="[beerName]">Détails</a>
   <p></p>
-  <button class="btn btn-light w3-block w3-orange"
+  <button class="btn btn-light w3-orange"
           *ngIf="!beerLiked"
           (click)="onLike()">
     Aimer
   </button>
 
-  <button class="btn btn-light w3-block w3-grey"
+  <button class="btn btn-light w3-grey"
           *ngIf="beerLiked"
           (click)="onLike()">
     Ne plus aimer
   </button>
 
-  <button class="btn btn-light w3-block w3-orange"
+  <button class="btn btn-light w3-orange"
           *ngIf="authStatus"
           (click)="addToCatalog()">
     Ajouter au catalogue
