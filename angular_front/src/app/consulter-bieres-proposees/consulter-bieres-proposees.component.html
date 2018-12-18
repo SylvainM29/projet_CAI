@@ -18,4 +18,10 @@
           (click)="onLike()">
     Ne plus aimer
   </button>
+
+  <button class="btn btn-sm btn-success"
+          *ngIf="authStatus"
+          (click)="addToCatalog()">
+    Ajouter au catalogue
+  </button>
 </li>

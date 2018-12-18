@@ -108,4 +108,15 @@ export class BieresProposeesService {
 
     this.getBeersFromServer();
   }
+
+  addToCatalog(beer: string) {
+    this.httpClient.get('http://localhost:8080/suggested/tocatalog/' + beer).subscribe(
+      (response) => {
+        console.log('Bière ajoutée au catalogue.');
+      },
+      (error) => {
+        console.log('Erreur lors de l\'ajout au catalogue : ' + error);
+      }
+    )
+  }
 }

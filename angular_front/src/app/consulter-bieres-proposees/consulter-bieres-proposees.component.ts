@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { BieresProposeesService } from '../services/bieres-proposees.service';
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-consulter-bieres-proposees',
@@ -7,7 +9,7 @@ import { BieresProposeesService } from '../services/bieres-proposees.service';
   styleUrls: ['./consulter-bieres-proposees.component.scss']
 })
 
-export class ConsulterBieresProposeesComponent implements OnInit {
+export class ConsulterBieresProposeesComponent implements OnInit, OnDestroy {
 
   @Input() beerId: string;
   @Input() beerName: string;
@@ -16,9 +18,23 @@ export class ConsulterBieresProposeesComponent implements OnInit {
   @Input() index: number;
   beerLiked: boolean;
 
-  constructor(private bieresProposeesService: BieresProposeesService) { }
+  authStatus: boolean;
+
+  authSubscription: Subscription;
+
+  constructor(private bieresProposeesService: BieresProposeesService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.authStatus = this.authService.isAuth;
+    this.authSubscription = this.authService.authSubject.subscribe(
+      (auth: boolean) => {
+        this.authStatus = auth;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
   getDegre() {
@@ -41,8 +57,14 @@ export class ConsulterBieresProposeesComponent implements OnInit {
     if (!this.beerLiked) {
       this.bieresProposeesService.likeOne(this.index);
       this.bieresProposeesService.upvoteSuggestedBeer(this.beerId);
+      //this.beerLiked = true;
     } else if (this.beerLiked) {
       this.bieresProposeesService.unlikeOne(this.index);
+      //this.beerLiked = false;
     }
+  }
+
+  addToCatalog() {
+    this.bieresProposeesService.addToCatalog(this.beerId);
   }
 }
