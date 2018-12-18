@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
-    <form (ngSubmit)="onSubmit(formulaire)" #formulaire="ngForm">
+    <form (ngSubmit)="onSubmit(formulaireCatalogue)" #formulaireCatalogue="ngForm">
     <div class="form-group">
         <label for="auteur">Ton Nom/surnom/...</label>
         <input type="text" id="auteur" class="form-control" name="auteur" ngModel required>
@@ -30,7 +30,7 @@
           <input type="text" id="description" class="form-control" name="description" ngModel>
       </div>
       <!-- <input type="text" name="date" style="display: none;" ng-value="coucou" ngModel/> -->
-      <button type="submit" class="button.btn.btn-primary" [disabled]="formulaire.invalid">Envoyer ta suggestion !</button>
+      <button type="submit" class="button.btn.btn-primary" [disabled]="formulaireCatalogue.invalid">Envoyer ta suggestion !</button>
     </form>
   </div>
 

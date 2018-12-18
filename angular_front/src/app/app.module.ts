@@ -17,6 +17,8 @@ import { CatalogueService } from './services/catalogue.service';
 import { AuthService } from './services/auth.service';
 import { FormPropositionComponent } from './form-proposition/form-proposition.component';
 import { FormPropositionService } from './services/form-proposition.service';
+import { FormCatalogueComponent } from './form-catalogue/form-catalogue.component';
+import { FormCatalogueService } from './services/form-catalogue.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
+  { path: 'add',  canActivate: [AuthGuard], component: FormCatalogueComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     CatalogueViewComponent,
     BeerComponent,
     FormPropositionComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    FormCatalogueComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ const appRoutes: Routes = [
     CatalogueService,
     AuthService,
     AuthGuard,
-    FormPropositionService
+    FormPropositionService,
+    FormCatalogueService
   ],
   bootstrap: [AppComponent]
 })

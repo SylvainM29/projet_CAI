@@ -1,20 +1,38 @@
+import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable()
 export class FormPropositionService{
 
-  newProposition(auteur: string, name: string, brasserie: string, type: string, degre: string, region: string){
+  newProposition(id, auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string){
     const formProposition = {
-      auteur :'',
+      id: 0,
       name :'',
-      brasserie:'',
-      typeB:'',
-      degre:'',
-      region:''
+      brewery:'',
+      style:'',
+      alcohol:'',
+      description:''
     };
-    formProposition.auteur = auteur;
+    formProposition.id = id;
     formProposition.name = name;
-    formProposition.brasserie = brasserie;
-    formProposition.typeB = type;
-    formProposition.degre = degre;
-    formProposition.region = region;
+    formProposition.brewery = brasserie;
+    formProposition.style = type;
+    formProposition.alcohol = degre;
+    formProposition.description = description;
     console.log(formProposition);
+    this.httpClient
+      .post('http://localhost:8080/suggested/new/formProposition.json', formProposition)
+      .subscribe(
+        () => {
+          console.log('Enregistrement terminé !');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
   }
+
+  constructor(private httpClient: HttpClient) { }
+
 }
