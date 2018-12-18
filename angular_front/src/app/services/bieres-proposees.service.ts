@@ -24,15 +24,17 @@ export class BieresProposeesService {
       like: false
     },
     {
-      name: '8.6',
-      degre: 8.6,
-      description: 'Bière de la cuite',
+      id: 'StBernardusPater6',
+      name: 'St Bernardus Pater 6',
+      degre: 6.7,
+      description: 'This name became a reference. This beer is mostly pointed out with its product name: a Paterke. This Paterke is a dark, chestnut coloured beer with a high fermentation (6.7%) and a full taste.',
       like: false
     },
     {
-      name: 'Falsbourg',
-      degre: 4.0,
-      description: 'Bière des touristes',
+      id: 'ChimayRed',
+      name: 'Chimay Rouge',
+      degre: 7.0,
+      description: 'This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature.',
       like: false
     }
   ];
