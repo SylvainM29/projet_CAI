@@ -22,7 +22,7 @@ export class FormPropositionService{
     formProposition.description = description;
     console.log(formProposition);
     this.httpClient
-      .post('http://localhost:8080/suggested/new/formProposition.json', formProposition)
+      .post('http://localhost:8080/suggested/new', formProposition)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');
