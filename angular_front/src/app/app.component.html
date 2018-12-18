@@ -9,10 +9,10 @@
   <!-- <img src="src/enibar_logo.png" /> -->
   <form>
     <div class="form-group">
-      <input type="text" placeholder="Login" id="pseudo" class="form-control" name="pseudo">
+      <input type="text" placeholder="Login" id="pseudo" class="form-control" name="pseudo" [(ngModel)]="username">
     </div>
     <div class="form-group">
-        <input type="password" placeholder="Mot de passe" id="password" class="form-control" name="password">
+        <input type="password" placeholder="Mot de passe" id="password" class="form-control" name="password" [(ngModel)]="password">
     </div>
   </form>
   <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">
