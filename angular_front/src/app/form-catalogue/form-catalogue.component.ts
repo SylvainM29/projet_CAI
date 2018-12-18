@@ -2,6 +2,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Component, OnInit } from '@angular/core';
 import { FormPropositionService } from '../services/form-proposition.service';
 import { NgForm } from '@angular/forms';
+import { FormCatalogueService } from '../services/form-catalogue.service';
 
 @Component({
   selector: 'app-form-catalogue',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class FormCatalogueComponent implements OnInit {
 
-  constructor(private formPropositionService: FormPropositionService,
+  constructor(private formCatalogueService: FormCatalogueService,
               private router: Router) {  }
 
   ngOnInit() {}
@@ -24,7 +25,7 @@ export class FormCatalogueComponent implements OnInit {
     const region = form.value['region'];
     const description = form.value['description'];
     const availability = form.value['availability'];
-    this.formPropositionService.newProposition(name, brasserie, typeB, degre, region, description, availability);
+    this.formCatalogueService.newCatalogueBeer(name, brasserie, typeB, degre, region, description, availability);
     this.router.navigate(['/catalogue']);
   }
 }
