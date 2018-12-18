@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 
 export class AppComponent implements OnInit, OnDestroy {
 
+  // Modify Pseudo/password
+  USERNAME: string = "admin";
+  PASSWORD: string = "admin";
+
   secondes: number;
 
   counterSubscription: Subscription;
@@ -33,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onSignIn() {
-    if (this.password == this.username && this.password == "admin") {
+    if (this.username == this.USERNAME && this.password == this.PASSWORD) {
       this.authService.signIn().then(
         () => {
           this.authStatus = this.authService.isAuth;

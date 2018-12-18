@@ -33,7 +33,7 @@ const appRoutes: Routes = [
   { path: 'bieresProposees', component: BieresProposeesViewComponent },
   { path: 'bieresProposees/:name', component: SuggestedBeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
-  { path: 'add',  canActivate: [AuthGuard], component: FormCatalogueComponent },
+  { path: 'add',  component: FormCatalogueComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
 ]
