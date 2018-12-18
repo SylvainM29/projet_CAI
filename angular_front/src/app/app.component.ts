@@ -17,6 +17,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   authStatus: boolean;
 
+  password: string;
+  username: string;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -30,11 +33,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onSignIn() {
-    this.authService.signIn().then(
-      () => {
-        this.authStatus = this.authService.isAuth;
-        this.router.navigate(['catalogue']);
-      });
+    if (this.password == this.username && this.password == "admin") {
+      this.authService.signIn().then(
+        () => {
+          this.authStatus = this.authService.isAuth;
+          this.router.navigate(['catalogue']);
+        });
+    }
   }
 
   onSignOut() {
