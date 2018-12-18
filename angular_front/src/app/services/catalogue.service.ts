@@ -4,34 +4,33 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CatalogueService {
-  allLike = false;
 
   beersSubject = new Subject<any[]>();
 
   private beers = [
     {
-      name: 'Heineken',
-      degre: 4.5,
-      description: 'Bière de luxe',
-      like: false
+      id: 'AffligemBlond',
+      name: 'Affligem Blond',
+      degre: 6.8,
+      description: 'Affligem Blonde, the classic clear blonde abbey ale, with a gentle roundness and 6.8% alcohol. Low on bitterness, it is eminently drinkable.'
     },
     {
-      name: 'Leffe',
-      degre: 6.0,
-      description: 'Bière des fragiles',
-      like: false
+      id: 'AffligemTripel',
+      name: 'Affligem Tripel',
+      degre: 8.5,
+      description: 'The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle.'
     },
     {
-      name: '8.6',
-      degre: 8.6,
-      description: 'Bière de la cuite',
-      like: false
+      id: 'StBernardusPater6',
+      name: 'St Bernardus Pater 6',
+      degre: 6.7,
+      description: 'This name became a reference. This beer is mostly pointed out with its product name: a Paterke. This Paterke is a dark, chestnut coloured beer with a high fermentation (6.7%) and a full taste.'
     },
     {
-      name: 'Falsbourg',
-      degre: 4.0,
-      description: 'Bière des touristes',
-      like: false
+      id: 'ChimayRed',
+      name: 'Chimay Rouge',
+      degre: 7.0,
+      description: 'This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature.'
     }
   ];
 
@@ -49,32 +48,6 @@ export class CatalogueService {
       }
     );
     return beer;
-  }
-
-  likeOne(i: number) {
-    this.beers[i].like = true;
-    this.emitBeersSubject();
-  }
-
-  unlikeOne(i: number) {
-    this.beers[i].like = false;
-    this.emitBeersSubject();
-  }
-
-  likeAll() {
-    for (let beer of this.beers) {
-      beer.like = true;
-    }
-    this.allLike = true;
-    this.emitBeersSubject();
-  }
-
-  unlikeAll() {
-    for (let beer of this.beers) {
-      beer.like = false;
-    }
-    this.allLike = false;
-    this.emitBeersSubject();
   }
 
   getBeersFromServer() {

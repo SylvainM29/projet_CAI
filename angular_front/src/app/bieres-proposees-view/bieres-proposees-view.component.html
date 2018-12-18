@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+  <h2>Les propositions de bières</h2>
+  <p>Mis à jour : {{ lastUpdate | async | date: 'short' | uppercase }}</p>
+  <ul class="list-group">
+    <app-consulter-bieres-proposees *ngFor="let beer of beers; let i = index"
+                             [beerId]="beer.id"
+                             [beerName]="beer.name"
+                             [beerDegre]="beer.degre"
+                             [beerLiked]="beer.like"
+                             [index]="i"></app-consulter-bieres-proposees>
+  </ul>
+  <button class="btn btn-success" *ngIf="!isAllLiked()" [disabled]="!isAuth" (click)="onLike()">Tout aimer</button>
+  <button class="btn btn-danger" *ngIf="isAllLiked()" [disabled]="!isAuth" (click)="onUnlike()">Tout enlever des favoris</button>
+  <button class="btn btn-success" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
+</div>

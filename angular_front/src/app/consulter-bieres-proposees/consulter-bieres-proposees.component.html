@@ -1,3 +1,21 @@
-<p>
-  consulter-bieres-proposees works!
-</p>
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': beerLiked,
+                'list-group-item-danger': !beerLiked}">
+  <!--<div style="width:20px;height:20px;" [ngStyle]="{'background-color': getColor()}"></div>-->
+  <h4>Bière : {{ beerName }} -- Degre : {{ getDegre() }}°</h4>
+  <!--<input type="text" class="form-control" [(ngModel)]="beerName">-->
+  <!--<input type="text" class="form-control" [(ngModel)]="beerDegre">-->
+  <a [routerLink]="[beerName]">Détails</a>
+  <p></p>
+  <button class="btn btn-sm btn-success"
+          *ngIf="!beerLiked"
+          (click)="onLike()">
+    Aimer
+  </button>
+
+  <button class="btn btn-sm btn-danger"
+          *ngIf="beerLiked"
+          (click)="onLike()">
+    Ne plus aimer
+  </button>
+</li>

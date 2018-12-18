@@ -21,12 +21,16 @@ import { FormCatalogueComponent } from './form-catalogue/form-catalogue.componen
 import { FormCatalogueService } from './services/form-catalogue.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { BieresProposeesViewComponent } from './bieres-proposees-view/bieres-proposees-view.component';
+import { BieresProposeesService } from './services/bieres-proposees.service';
 
 const appRoutes: Routes = [
   { path: '', component: AuthComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
+  { path: 'bieresProposees', canActivate: [AuthGuard], component: BieresProposeesViewComponent },
+  { path: 'bieresProposees/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
   { path: 'add',  canActivate: [AuthGuard], component: FormCatalogueComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -43,7 +47,8 @@ const appRoutes: Routes = [
     BeerComponent,
     FormPropositionComponent,
     FourOhFourComponent,
-    FormCatalogueComponent
+    FormCatalogueComponent,
+    BieresProposeesViewComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuard,
     FormPropositionService,
-    FormCatalogueService
+    FormCatalogueService,
+    BieresProposeesService
   ],
   bootstrap: [AppComponent]
 })
