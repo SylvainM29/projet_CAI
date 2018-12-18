@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class FormPropositionService{
 
-  newProposition(name: string, brasserie: string, type: string, degre: string, region: string, description: string, availability: string){
+  newProposition(auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string){
     const formProposition = {
       id: "",
       name :'',

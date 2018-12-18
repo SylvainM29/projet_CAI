@@ -100,19 +100,19 @@ export class BieresProposeesService {
     this.httpClient.get<SuggestedBeer[]>('http://localhost:8080/suggested/upvote/' + beer).subscribe(
       (response) => {
         console.log('Vote effectué.');
+        this.getBeersFromServer();
       },
       (error) => {
         console.log('Erreur lors du vote : ' + error);
       }
     )
-
-    this.getBeersFromServer();
   }
 
   addToCatalog(beer: string) {
     this.httpClient.get('http://localhost:8080/suggested/tocatalog/' + beer).subscribe(
       (response) => {
         console.log('Bière ajoutée au catalogue.');
+        this.getBeersFromServer();
       },
       (error) => {
         console.log('Erreur lors de l\'ajout au catalogue : ' + error);
