@@ -11,7 +11,7 @@
                              [beerVote]="beer.nb_vote"
                              [index]="i"></app-consulter-bieres-proposees>
   </ul>
-  <button class="btn btn-success" *ngIf="!isAllLiked()" [disabled]="!isAuth" (click)="onLike()">Tout aimer</button>
-  <button class="btn btn-danger" *ngIf="isAllLiked()" [disabled]="!isAuth" (click)="onUnlike()">Tout enlever des favoris</button>
-  <button class="btn btn-success" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
+  <button class="btn btn-light w3-orange" *ngIf="!isAllLiked()" [disabled]="!isAuth" (click)="onLike()">Tout aimer</button>
+  <button class="btn btn-light w3-grey" *ngIf="isAllLiked()" [disabled]="!isAuth" (click)="onUnlike()">Tout enlever des favoris</button>
+  <button class="btn btn-light w3-orange" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
 </div>
