@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class FormCatalogueComponent implements OnInit {
   id = 1;
-  
+
   constructor(private formPropositionService: FormPropositionService,
               private router: Router) {  }
 
@@ -18,14 +18,14 @@ export class FormCatalogueComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    const auteur = form.value['auteur'];
     const name = form.value['name'];
     const brasserie = form.value['brasserie'];
     const typeB = form.value['type'];
     const degre = form.value['degre'];
     const region = form.value['region'];
     const description = form.value['description'];
-    this.formPropositionService.newProposition(this.id, auteur, name, brasserie, typeB, degre, region, description);
+    const availability = form.value['availability'];
+    this.formPropositionService.newProposition(this.id, name, brasserie, typeB, degre, region, description, availability);
     this.id = this.id+1;
     this.router.navigate(['/catalogue']);
   }

@@ -12,7 +12,8 @@ export class FormCatalogueService{
       brewery:'',
       style:'',
       alcohol:'',
-      description:''
+      description:'',
+      availability:''
     };
     formCatalogue.id = id;
     formCatalogue.name = name;
@@ -20,6 +21,7 @@ export class FormCatalogueService{
     formCatalogue.style = type;
     formCatalogue.alcohol = degre;
     formCatalogue.description = description;
+    formCatalogue.availability = availability;
     console.log(formCatalogue);
     this.httpClient
       .post('http://localhost:8080/suggested/new/formCatalogue.json', formCatalogue)

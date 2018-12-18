@@ -1,10 +1,6 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <form (ngSubmit)="onSubmit(formulaireCatalogue)" #formulaireCatalogue="ngForm">
-    <div class="form-group">
-        <label for="auteur">Ton Nom/surnom/...</label>
-        <input type="text" id="auteur" class="form-control" name="auteur" ngModel required>
-    </div>
       <div class="form-group">
         <label for="name">Nom de la biere</label>
         <input type="text" id="name" class="form-control" name="name" ngModel required>
@@ -28,6 +24,15 @@
       <div class="form-group">
           <label for="description">Une petite description</label>
           <input type="text" id="description" class="form-control" name="description" ngModel>
+      </div>
+      <div class="form-group">
+          <label for="availability">
+            Disponibilité
+          </label>
+          <select id="availability" class="form-control" name="availability" ngModel>
+            <option value="true">Disponible en ce moment au bar</option>
+            <option value="false">Pas disponible</option>
+          </select>
       </div>
       <!-- <input type="text" name="date" style="display: none;" ng-value="coucou" ngModel/> -->
       <button type="submit" class="button.btn.btn-primary" [disabled]="formulaireCatalogue.invalid">Envoyer ta suggestion !</button>
