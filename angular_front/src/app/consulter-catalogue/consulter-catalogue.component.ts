@@ -8,10 +8,9 @@ import { CatalogueService } from '../services/catalogue.service'
 })
 
 export class ConsulterCatalogueComponent implements OnInit {
-
+  @Input() beerId: string;
   @Input() beerName: string;
   @Input() beerDegre: number;
-  @Input() beerLiked: boolean;
   @Input() index: number;
 
   constructor(private catalogueService: CatalogueService) { }
@@ -21,25 +20,5 @@ export class ConsulterCatalogueComponent implements OnInit {
 
   getDegre() {
     return this.beerDegre;
-  }
-
-  getLike() {
-    return this.beerLiked;
-  }
-
-  getColor() {
-    if (this.beerLiked) {
-      return 'green';
-    } else if (!this.beerLiked) {
-      return 'red';
-    }
-  }
-
-  onLike() {
-    if (!this.beerLiked) {
-      this.catalogueService.likeOne(this.index);
-    } else if (this.beerLiked) {
-      this.catalogueService.unlikeOne(this.index);
-    }
   }
 }

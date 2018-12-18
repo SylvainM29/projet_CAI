@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CatalogueService {
+export class BieresProposeesService {
   allLike = false;
 
   beersSubject = new Subject<any[]>();
@@ -37,7 +37,7 @@ export class CatalogueService {
     }
   ];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   emitBeersSubject() {
     // On émet une copie de la liste des bières
@@ -53,8 +53,35 @@ export class CatalogueService {
     return beer;
   }
 
+  likeOne(i: number) {
+    this.beers[i].like = true;
+    this.emitBeersSubject();
+  }
+
+  unlikeOne(i: number) {
+    this.beers[i].like = false;
+    this.emitBeersSubject();
+  }
+
+  likeAll() {
+    for (let beer of this.beers) {
+      beer.like = true;
+      this.upvoteSuggestedBeer(beer.id);
+    }
+    this.allLike = true;
+    this.emitBeersSubject();
+  }
+
+  unlikeAll() {
+    for (let beer of this.beers) {
+      beer.like = false;
+    }
+    this.allLike = false;
+    this.emitBeersSubject();
+  }
+
   getBeersFromServer() {
-    this.httpClient.get<any[]>('http://localhost:8080/catalog').subscribe(
+    this.httpClient.get<any[]>('http://localhost:8080/suggested').subscribe(
       (response) => {
         this.beers = response;
         this.emitBeersSubject();
@@ -63,5 +90,16 @@ export class CatalogueService {
         console.log('Erreur de chargement : ' + error);
       }
     );
+  }
+
+  upvoteSuggestedBeer(beer: string) {
+    this.httpClient.get('http://localhost:8080/suggested/upvote/' + beer).subscribe(
+      () => {
+        console.log('Vote effectué.');
+      },
+      (error) => {
+        console.log('Erreur lors du vote : ' + error);
+      }
+    )
   }
 }

@@ -44,22 +44,6 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
     this.beersSubscription.unsubscribe();
   }
 
-  onLike() {
-    this.catalogueService.likeAll();
-  }
-
-  onUnlike() {
-    if (confirm('Êtes-vous sûr de vouloir tout enlever de vos favoris ?')) {
-      this.catalogueService.unlikeAll();
-    } else {
-      return null;
-    }
-  }
-
-  isAllLiked() {
-    return this.catalogueService.allLike;
-  }
-
   onFetch() {
     this.catalogueService.getBeersFromServer();
   }

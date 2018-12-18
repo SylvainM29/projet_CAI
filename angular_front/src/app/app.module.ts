@@ -19,12 +19,16 @@ import { FormPropositionComponent } from './form-proposition/form-proposition.co
 import { FormPropositionService } from './services/form-proposition.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { BieresProposeesViewComponent } from './bieres-proposees-view/bieres-proposees-view.component';
+import { BieresProposeesService } from './services/bieres-proposees.service';
 
 const appRoutes: Routes = [
   { path: '', component: AuthComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
+  { path: 'bieresProposees', canActivate: [AuthGuard], component: BieresProposeesViewComponent },
+  { path: 'bieresProposees/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' } // ATTENTION : cette route est à mettre obligatoirement à la fin
@@ -39,7 +43,8 @@ const appRoutes: Routes = [
     CatalogueViewComponent,
     BeerComponent,
     FormPropositionComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    BieresProposeesViewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ const appRoutes: Routes = [
     CatalogueService,
     AuthService,
     AuthGuard,
-    FormPropositionService
+    FormPropositionService,
+    BieresProposeesService
   ],
   bootstrap: [AppComponent]
 })
