@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BeerComponent implements OnInit {
 
   name: string = "None";
-  degre: number = 0;
+  degre: string = "0";
   description: string = "None";
 
   constructor(private catalogueService: CatalogueService, private route: ActivatedRoute) { }
@@ -18,8 +18,8 @@ export class BeerComponent implements OnInit {
   ngOnInit() {
     const name = this.route.snapshot.params['name'];
     const beer = this.catalogueService.getBeerByName(name);
-    this.name = beer.name;
-    this.degre = beer.degre;
-    this.description = beer.description;
+    this.name = beer.beer.name;
+    this.degre = beer.beer.alcohol;
+    this.description = beer.beer.description;
   }
 }

@@ -1,13 +1,16 @@
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CatalogBeer } from '../models/catalogue.model';
 
 @Injectable()
 export class CatalogueService {
 
-  beersSubject = new Subject<any[]>();
+  beersSubject = new Subject<CatalogBeer[]>();
 
-  private beers = [
+  catalogBeer: CatalogBeer[];
+
+  /*private beers = [
     {
       id: 'AffligemBlond',
       name: 'Affligem Blond',
@@ -32,28 +35,29 @@ export class CatalogueService {
       degre: 7.0,
       description: 'This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature.'
     }
-  ];
+  ];*/
 
   constructor(private httpClient: HttpClient) {}
 
   emitBeersSubject() {
     // On émet une copie de la liste des bières
-    this.beersSubject.next(this.beers.slice());
+    this.beersSubject.next(this.catalogBeer.slice());
   }
 
   getBeerByName(name: string) {
-    const beer = this.beers.find(
+    const beer = this.catalogBeer.find(
       (beerObject) => {
-        return beerObject.name == name;
+        return beerObject.beer.name == name;
       }
     );
     return beer;
   }
 
   getBeersFromServer() {
-    this.httpClient.get<any[]>('http://localhost:8080/catalog').subscribe(
+    this.httpClient.get<CatalogBeer[]>('http://localhost:8080/catalog').subscribe(
       (response) => {
-        this.beers = response;
+        this.catalogBeer = response;
+        console.log(response);
         this.emitBeersSubject();
       },
       (error) => {

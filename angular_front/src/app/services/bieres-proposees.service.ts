@@ -1,14 +1,17 @@
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SuggestedBeer } from '../models/proposition.model';
 
 @Injectable()
 export class BieresProposeesService {
   allLike = false;
 
-  beersSubject = new Subject<any[]>();
+  beersSubject = new Subject<SuggestedBeer[]>();
 
-  private beers = [
+  suggestedBeer: SuggestedBeer[];
+
+  /*private beers = [
     {
       id: 'AffligemBlond',
       name: 'Affligem Blond',
@@ -37,55 +40,54 @@ export class BieresProposeesService {
       description: 'This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature.',
       like: false
     }
-  ];
+  ];*/
 
   constructor(private httpClient: HttpClient) { }
 
   emitBeersSubject() {
     // On émet une copie de la liste des bières
-    this.beersSubject.next(this.beers.slice());
+    this.beersSubject.next(this.suggestedBeer.slice());
   }
 
   getBeerByName(name: string) {
-    const beer = this.beers.find(
+    const beer = this.suggestedBeer.find(
       (beerObject) => {
-        return beerObject.name == name;
+        return beerObject.beer.name == name;
       }
     );
     return beer;
   }
 
   likeOne(i: number) {
-    this.beers[i].like = true;
+    //this.suggestedBeer[i].like = true;
     this.emitBeersSubject();
   }
 
   unlikeOne(i: number) {
-    this.beers[i].like = false;
+    //this.suggestedBeer[i].like = false;
     this.emitBeersSubject();
   }
 
   likeAll() {
-    for (let beer of this.beers) {
-      beer.like = true;
-      this.upvoteSuggestedBeer(beer.id);
+    for (let beer of this.suggestedBeer) {
+      this.upvoteSuggestedBeer(beer.beer.id);
     }
-    this.allLike = true;
     this.emitBeersSubject();
   }
 
   unlikeAll() {
-    for (let beer of this.beers) {
-      beer.like = false;
+    for (let beer of this.suggestedBeer) {
+      //beer.like = false;
     }
     this.allLike = false;
     this.emitBeersSubject();
   }
 
   getBeersFromServer() {
-    this.httpClient.get<any[]>('http://localhost:8080/suggested').subscribe(
+    this.httpClient.get<SuggestedBeer[]>('http://localhost:8080/suggested').subscribe(
       (response) => {
-        this.beers = response;
+        this.suggestedBeer = response;
+        console.log(this.suggestedBeer);
         this.emitBeersSubject();
       },
       (error) => {
@@ -95,13 +97,15 @@ export class BieresProposeesService {
   }
 
   upvoteSuggestedBeer(beer: string) {
-    this.httpClient.get('http://localhost:8080/suggested/upvote/' + beer).subscribe(
-      () => {
+    this.httpClient.get<SuggestedBeer[]>('http://localhost:8080/suggested/upvote/' + beer).subscribe(
+      (response) => {
         console.log('Vote effectué.');
       },
       (error) => {
         console.log('Erreur lors du vote : ' + error);
       }
     )
+
+    this.getBeersFromServer();
   }
 }

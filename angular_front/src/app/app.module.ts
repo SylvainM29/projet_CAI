@@ -23,6 +23,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { BieresProposeesViewComponent } from './bieres-proposees-view/bieres-proposees-view.component';
 import { BieresProposeesService } from './services/bieres-proposees.service';
+import { SuggestedBeerComponent } from './suggested-beer/suggested-beer.component';
 
 const appRoutes: Routes = [
   { path: '', component: AuthComponent },
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
   { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
   { path: 'bieresProposees', canActivate: [AuthGuard], component: BieresProposeesViewComponent },
-  { path: 'bieresProposees/:name', canActivate: [AuthGuard], component: BeerComponent },
+  { path: 'bieresProposees/:name', canActivate: [AuthGuard], component: SuggestedBeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
   { path: 'add',  canActivate: [AuthGuard], component: FormCatalogueComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     FormPropositionComponent,
     FourOhFourComponent,
     FormCatalogueComponent,
-    BieresProposeesViewComponent
+    BieresProposeesViewComponent,
+    SuggestedBeerComponent
   ],
   imports: [
     BrowserModule,

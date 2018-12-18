@@ -12,8 +12,9 @@ export class ConsulterBieresProposeesComponent implements OnInit {
   @Input() beerId: string;
   @Input() beerName: string;
   @Input() beerDegre: number;
-  @Input() beerLiked: boolean;
+  @Input() beerVote: number;
   @Input() index: number;
+  beerLiked: boolean;
 
   constructor(private bieresProposeesService: BieresProposeesService) { }
 

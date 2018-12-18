@@ -8,6 +8,8 @@ import org.jooby.mongodb.Mongodb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.jooby.handlers.CorsHandler;
+
 import java.nio.file.Paths;
 
 import org.jooby.Jooby;
@@ -21,6 +23,8 @@ public class App extends Jooby {
 
   {
     get("/", () -> "Hello World!");
+
+	use("*", new CorsHandler());
 
     use(new Jackson());
     use(new Mongodb());
