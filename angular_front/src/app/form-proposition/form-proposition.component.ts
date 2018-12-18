@@ -11,7 +11,6 @@ import { NgForm } from '@angular/forms';
 export class FormPropositionComponent implements OnInit {
 
   date = new Date();
-  id = 1;
   constructor(private formPropositionService: FormPropositionService,
               private router: Router) {  }
 
@@ -26,8 +25,7 @@ export class FormPropositionComponent implements OnInit {
     const degre = form.value['degre'];
     const region = form.value['region'];
     const description = form.value['description'];
-    this.formPropositionService.newProposition(this.id, auteur, name, brasserie, typeB, degre, region, description);
-    this.id = this.id+1;
-    this.router.navigate(['/catalogue']);
+    this.formPropositionService.newProposition(auteur, name, brasserie, typeB, degre, region, description);
+    this.router.navigate(['/bieresProposees']);
   }
 }
