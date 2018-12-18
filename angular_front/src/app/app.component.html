@@ -7,31 +7,37 @@
 <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
 
   <!-- <img src="src/enibar_logo.png" /> -->
-  <form>
-    <div class="form-group">
-      <input type="text" placeholder="Login" id="pseudo" class="form-control" name="pseudo" [(ngModel)]="username">
-    </div>
-    <div class="form-group">
-        <input type="password" placeholder="Mot de passe" id="password" class="form-control" name="password" [(ngModel)]="password">
-    </div>
-  </form>
-  <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">
-    Se connecter
-  </button>
-  <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">
-    Se déconnecter
-  </button>
   <div class="w3-container">
     <h3 class="w3-padding-64"><b>Propose ta binche</b></h3>
   </div>
+
   <div class="w3-bar-block">
-    <ul class="nav navbar-nav">
       <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="home">Accueil</a></div>
       <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="catalogue">Catalogue</a></div>
       <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="proposition">Proposer une bière</a></div>
       <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="bieresProposees">Bières proposées</a></div>
       <div *ngIf="authStatus" routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="add">Ajouter bière au catalogue</a></div>
-    </ul>
+  </div>
+
+  <div class="w3-container">
+    <h3 class="w3-padding-32"></h3>
+  </div>
+
+  <div class="w3-container">
+    <form *ngIf="!authStatus">
+      <div class="form-group">
+        <input type="text" placeholder="Login" id="pseudo" class="form-control" name="pseudo" [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+          <input type="password" placeholder="Mot de passe" id="password" class="form-control" name="password" [(ngModel)]="password">
+      </div>
+    </form>
+    <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">
+      Se connecter
+    </button>
+    <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">
+      Se déconnecter
+    </button>
   </div>
 </nav>
 
