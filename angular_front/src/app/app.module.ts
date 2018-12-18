@@ -27,11 +27,11 @@ import { SuggestedBeerComponent } from './suggested-beer/suggested-beer.componen
 
 const appRoutes: Routes = [
   { path: '', component: AuthComponent },
-  { path: 'auth', component: AuthComponent },
-  { path: 'catalogue', component: CatalogueViewComponent },
-  { path: 'catalogue/:name', component: BeerComponent },
-  { path: 'bieresProposees', component: BieresProposeesViewComponent },
-  { path: 'bieresProposees/:name', component: SuggestedBeerComponent },
+  { path: 'home', component: AuthComponent },
+  { path: 'catalogue', canActivate: [AuthGuard], component: CatalogueViewComponent },
+  { path: 'catalogue/:name', canActivate: [AuthGuard], component: BeerComponent },
+  { path: 'bieresProposees', canActivate: [AuthGuard], component: BieresProposeesViewComponent },
+  { path: 'bieresProposees/:name', canActivate: [AuthGuard], component: SuggestedBeerComponent },
   { path: 'proposition', component: FormPropositionComponent },
   { path: 'add',  canActivate: [AuthGuard], component: FormCatalogueComponent },
   { path: 'not-found', component: FourOhFourComponent },

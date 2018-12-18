@@ -26,16 +26,16 @@
   </div>
   <div class="w3-bar-block">
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="auth">Authentification</a></li>
-      <li routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="catalogue">Catalogue</a></li>
-      <li routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="proposition">Proposer une bière</a></li>
-      <li routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="bieresProposees">Bières proposées</a></li>
-      <div *ngIf="authStatus">
-        <li routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="add">Ajouter une bière au catalogue(admin)</a></li>
-      </div>
+      <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="home">Accueil</a></div>
+      <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="catalogue">Catalogue</a></div>
+      <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="proposition">Proposer une bière</a></div>
+      <div routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="bieresProposees">Bières proposées</a></div>
+      <div *ngIf="authStatus" routerLinkActive="active"><a class="w3-bar-item w3-button w3-hover-white" routerLink="add">Ajouter bière au catalogue</a></div>
     </ul>
   </div>
 </nav>
+
+
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
   <div class="container">
     <div class="row">
