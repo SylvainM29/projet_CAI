@@ -1,6 +1,8 @@
 <div class="col-xs-12">
   <h2>Les bières à la une</h2>
   <p>Mis à jour : {{ lastUpdate | async | date: 'short' | uppercase }}</p>
+  <hr style="width:500px;border:5px solid orange" class="w3-round">
+  <br/>
   <ul class="list-group">
     <app-consulter-catalogue *ngFor="let beer of catalogBeer; let i = index"
                              [beerId]="beer.beer.id"
@@ -8,5 +10,5 @@
                              [beerDegre]="beer.beer.alcohol"
                              [index]="i"></app-consulter-catalogue>
   </ul>
-  <button class="btn btn-success" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
+  <button class="btn btn-light w3-orange" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
 </div>

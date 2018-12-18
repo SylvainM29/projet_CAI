@@ -1,6 +1,8 @@
 <div class="col-xs-12">
   <h2>Les propositions de bières</h2>
   <p>Mis à jour : {{ lastUpdate | async | date: 'short' | uppercase }}</p>
+  <hr style="width:500px;border:5px solid orange" class="w3-round">
+  <br/>
   <ul class="list-group">
     <app-consulter-bieres-proposees *ngFor="let beer of suggestedBeer; let i = index"
                              [beerId]="beer.beer.id"
