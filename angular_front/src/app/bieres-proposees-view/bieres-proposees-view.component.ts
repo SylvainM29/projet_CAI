@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BieresProposeesService } from '../services/bieres-proposees.service';
+import { SuggestedBeer } from '../models/proposition.model';
 
 @Component({
   selector: 'app-bieres-proposees-view',
@@ -20,7 +21,7 @@ export class BieresProposeesViewComponent implements OnInit, OnDestroy {
     );
   });
 
-  beers: any[];
+  suggestedBeer: SuggestedBeer[];
 
   beersSubscription: Subscription;
 
@@ -34,8 +35,8 @@ export class BieresProposeesViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.beersSubscription = this.bieresProposeesService.beersSubject.subscribe(
-      (beers: any[]) => {
-        this.beers = beers;
+      (beers: SuggestedBeer[]) => {
+        this.suggestedBeer = beers;
       }
     );
     this.bieresProposeesService.emitBeersSubject();
@@ -64,5 +65,4 @@ export class BieresProposeesViewComponent implements OnInit, OnDestroy {
   onFetch() {
     this.bieresProposeesService.getBeersFromServer();
   }
-
 }

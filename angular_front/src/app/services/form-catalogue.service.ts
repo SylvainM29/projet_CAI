@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class FormCatalogueService{
 
-  newCatalogueBeer(id, auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string){
+  newCatalogueBeer(id, auteur: string, name: string, brasserie: string, type: string, degre: string, region: string, description: string,
+      availability: string) {
     const formCatalogue = {
       id: 0,
       name :'',

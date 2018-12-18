@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CatalogueService } from '../services/catalogue.service'
 import { Subscription } from 'rxjs';
+import { CatalogBeer } from '../models/catalogue.model';
 
 @Component({
   selector: 'app-catalogue-view',
@@ -19,9 +20,13 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
     );
   });
 
-  beers: any[];
+  catalogBeer: CatalogBeer[];
 
   beersSubscription: Subscription;
+
+  onFetch() {
+    this.catalogueService.getBeersFromServer();
+  }
 
   constructor(private catalogueService: CatalogueService) {
     setTimeout(
@@ -33,8 +38,11 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.beersSubscription = this.catalogueService.beersSubject.subscribe(
-      (beers: any[]) => {
-        this.beers = beers;
+      (beers: CatalogBeer[]) => {
+        console.log("yolo");
+        this.catalogBeer = beers;
+        console.log(this.catalogBeer);
+        console.log("yolo2");
       }
     );
     this.catalogueService.emitBeersSubject();
@@ -44,7 +52,5 @@ export class CatalogueViewComponent implements OnInit, OnDestroy {
     this.beersSubscription.unsubscribe();
   }
 
-  onFetch() {
-    this.catalogueService.getBeersFromServer();
-  }
+
 }

@@ -2,10 +2,10 @@
   <h2>Les bières à la une</h2>
   <p>Mis à jour : {{ lastUpdate | async | date: 'short' | uppercase }}</p>
   <ul class="list-group">
-    <app-consulter-catalogue *ngFor="let beer of beers; let i = index"
-                             [beerId]="beer.id"
-                             [beerName]="beer.name"
-                             [beerDegre]="beer.degre"
+    <app-consulter-catalogue *ngFor="let beer of catalogBeer; let i = index"
+                             [beerId]="beer.beer.id"
+                             [beerName]="beer.beer.name"
+                             [beerDegre]="beer.beer.alcohol"
                              [index]="i"></app-consulter-catalogue>
   </ul>
   <button class="btn btn-success" [disabled]="!isAuth" (click)="onFetch()">Charger</button>
